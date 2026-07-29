@@ -1,0 +1,110 @@
+# W04 Design Document: Foundation Programs
+
+**Student Name:** [Nathan Almeida da Costa]  
+**Course:** CSE 210 - Programming with Classes  
+
+---
+
+## Program 1: Abstraction with YouTube Videos
+
+### Overview
+This program tracks YouTube videos and their comments using abstraction to separate video management from comment tracking.
+
+### Classes and Responsibilities
+
+#### 1. Comment
+* **Responsibility:** Holds individual comment details.
+* **Attributes:**
+  * `_commenterName` : `string`
+  * `_commentText` : `string`
+* **Methods:**
+  * `Comment(commenterName : string, commentText : string)`
+  * `GetCommenterName()` : `string`
+  * `GetCommentText()` : `string`
+
+#### 2. Video
+* **Responsibility:** Stores video details and manages its list of comments.
+* **Attributes:**
+  * `_title` : `string`
+  * `_author` : `string`
+  * `_lengthInSeconds` : `int`
+  * `_comments` : `List<Comment>`
+* **Methods:**
+  * `Video(title : string, author : string, lengthInSeconds : int)`
+  * `AddComment(comment : Comment)` : `void`
+  * `GetCommentCount()` : `int`
+  * `GetTitle()` : `string`
+  * `GetAuthor()` : `string`
+  * `GetLengthInSeconds()` : `int`
+  * `GetComments()` : `List<Comment>`
+
+### Execution Flow
+1. `Program.cs` creates 3 `Video` instances.
+2. Adds 3-4 `Comment` objects to each video using `AddComment()`.
+3. Stores videos in a `List<Video>`.
+4. Loops through the list and prints the title, author, length, comment count, and each comment.
+
+---
+
+## Program 2: Encapsulation with Online Ordering
+
+### Overview
+This program handles customer orders, products, and shipping calculations while encapsulating pricing logic and address rules.
+
+### Classes and Responsibilities
+
+#### 1. Address
+* **Responsibility:** Stores address details and checks if the address is in the USA.
+* **Attributes:**
+  * `_streetAddress` : `string`
+  * `_city` : `string`
+  * `_stateProvince` : `string`
+  * `_country` : `string`
+* **Methods:**
+  * `Address(street : string, city : string, state : string, country : string)`
+  * `IsInUSA()` : `bool`
+  * `GetFullAddress()` : `string`
+
+#### 2. Customer
+* **Responsibility:** Stores customer information and their address object.
+* **Attributes:**
+  * `_name` : `string`
+  * `_address` : `Address`
+* **Methods:**
+  * `Customer(name : string, address : Address)`
+  * `IsInUSA()` : `bool`
+  * `GetName()` : `string`
+  * `GetAddress()` : `Address`
+
+#### 3. Product
+* **Responsibility:** Represents a product and calculates its subtotal based on quantity.
+* **Attributes:**
+  * `_name` : `string`
+  * `_productId` : `string`
+  * `_price` : `double`
+  * `_quantity` : `int`
+* **Methods:**
+  * `Product(name : string, productId : string, price : double, quantity : int)`
+  * `GetTotalCost()` : `double`
+  * `GetName()` : `string`
+  * `GetProductId()` : `string`
+
+#### 4. Order
+* **Responsibility:** Contains products and a customer. Calculates total costs and formats labels.
+* **Attributes:**
+  * `_products` : `List<Product>`
+  * `_customer` : `Customer`
+* **Methods:**
+  * `Order(customer : Customer)`
+  * `AddProduct(product : Product)` : `void`
+  * `CalculateTotalCost()` : `double`
+  * `GetPackingLabel()` : `string`
+  * `GetShippingLabel()` : `string`
+
+### Execution Flow
+1. `Program.cs` creates two orders (one USA customer, one International).
+2. Adds multiple products to each order.
+3. For each order, it prints:
+   * Packing Label (Product names and IDs)
+   * Shipping Label (Customer name and full address)
+   * Grand Total (Product costs + $5 USA or $35 International shipping)
