@@ -1,0 +1,38 @@
+/*
+WHAT IS INHERITANCE AND WHY IS IT IMPORTANT?
+
+To me, inheritance is basically a mechanism in object-oriented programming that allows a new class 
+(a child or derived class) to automatically absorb attributes and behaviors from an existing class 
+(a parent or base class). Instead of writing the exact same fields and methods over and over for 
+related types of objects, inheritance lets us define common traits once in a parent class and then 
+build specialized versions on top of it.
+
+The biggest benefit of inheritance is code reuse and easier code organization. By placing shared 
+logic inside a single base class, we avoid repeating code across multiple files. If we ever need to 
+fix a bug or update a shared feature, we only have to change it in one central spot (the parent class), 
+and every child class inherits that change automatically. It also creates a logical hierarchy that 
+makes the overall project structure easier to follow.
+
+In a practical application, if you were building an assignment tracking system, you could have a base 
+class called "Activity" that handles general traits like a title and a due date. Then, specialized classes 
+like "ReadingActivity" or "ProgrammingActivity" could inherit from "Activity" and add their own specific 
+fields, like page counts or repository links.
+
+A simple example of how this looks in code:
+
+public class Activity
+{
+    public string _title;
+    public string _dueDate;
+}
+
+public class ReadingActivity : Activity
+{
+    public int _pageCount;
+}
+
+As you can see, ReadingActivity automatically gets the _title and _dueDate fields from Activity 
+without having to declare them again. It inherits those base traits using the colon syntax (:) and 
+simply adds its own extra field, _pageCount. This keeps our classes clean, avoids duplicate code, and 
+clearly shows how different types of activities relate to each other.
+*/
